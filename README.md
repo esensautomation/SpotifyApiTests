@@ -1,7 +1,7 @@
 ---
 
 <p align="center">
-    <img src="https://travis-ci.org/esensautomation/EsensAutomation.svg?branch=master">
+    <img src="https://travis-ci.org/esensautomation/SpotifyApiTests.svg?branch=master">
 </p>
 
 ---
