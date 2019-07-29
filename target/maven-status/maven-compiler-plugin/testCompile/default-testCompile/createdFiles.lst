@@ -1,0 +1,3 @@
+com\spotify\automation\api\runner\v1\integrationTests\playlists\CreateAPlaylistFtRunner.class
+com\spotify\automation\api\runner\v1\integrationTests\playlists\UpdateAPlaylistFtRunner.class
+com\spotify\automation\api\runner\v1\integrationTests\playlists\ReadAPlaylistFtRunner.class

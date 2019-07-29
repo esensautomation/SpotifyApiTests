@@ -1,0 +1,5 @@
+com\spotify\automation\api\steps\SpotifyApiActionSteps.class
+com\spotify\automation\api\steps\SpotifyApiValidationSteps.class
+com\spotify\automation\api\steps\SpotifyApiInitializationSteps.class
+com\spotify\automation\api\exceptions\SpotifyAuthorizationTokenNotFound.class
+com\spotify\automation\api\steps\SpotifyApiScenarioContext.class
