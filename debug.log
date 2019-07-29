@@ -17,3 +17,7 @@
 [0722/120943.406:ERROR:file_io_win.cc(161)] CreateFile C:\Users\APOTHU~1\AppData\Local\Temp\scoped_dir6512_13890\Crashpad\settings.dat: Le fichier spécifié est introuvable. (0x2)
 [0723/144132.812:ERROR:file_io_win.cc(161)] CreateFile C:\Users\APOTHU~1\AppData\Local\Temp\scoped_dir7716_12190\Crashpad\settings.dat: Le fichier spécifié est introuvable. (0x2)
 [0723/145156.456:ERROR:file_io_win.cc(161)] CreateFile C:\Users\APOTHU~1\AppData\Local\Temp\scoped_dir13812_8453\Crashpad\settings.dat: Le fichier spécifié est introuvable. (0x2)
+[0729/121304.619:ERROR:file_io_win.cc(161)] CreateFile C:\Users\APOTHU~1\AppData\Local\Temp\scoped_dir15640_27319\Crashpad\settings.dat: Le chemin d’accès spécifié est introuvable. (0x3)
+[0729/121304.626:ERROR:file_io_win.cc(170)] CreateFile C:\Users\APOTHU~1\AppData\Local\Temp\scoped_dir15640_27319\Crashpad\reports\dc945c3b-2f6d-4843-949c-a076eae47e21.dmp: Le chemin d’accès spécifié est introuvable. (0x3)
+[0729/121304.626:ERROR:crash_report_exception_handler.cc(97)] PrepareNewCrashReport failed
+[0729/121304.956:ERROR:crash_report_database_win.cc(558)] GetFileAttributes C:\Users\APOTHU~1\AppData\Local\Temp\scoped_dir15640_27319\Crashpad: Le fichier spécifié est introuvable. (0x2)

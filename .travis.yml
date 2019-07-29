@@ -1,0 +1,21 @@
+language: java
+
+cache:
+  directories:
+    - ~/.m2
+
+jobs:
+  include:
+    - stage: build
+      name: Build Maven Artifact
+      script:
+        - cp .m2/settings.xml ~/.m2/settings.xml
+        - mvn clean install -DskipTests=true
+
+    - stage: test
+      name: Run Maven Verify
+      script: mvn verify
+
+    - stage: deploy
+      name: Maven Deploy
+      script: mvn deploy
