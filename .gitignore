@@ -1,6 +1,11 @@
 .idea/
+target/
 */target/
 **/target/
 *.iml
 .settings/
 .project
+*.log
+.debug.log
+debug.log
+target/SpotifyApiTests-1.0-SNAPSHOT.jar
