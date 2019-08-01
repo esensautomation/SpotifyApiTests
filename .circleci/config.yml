@@ -11,7 +11,7 @@ jobs: # a collection of steps
           command: mvn clean compile
       - run:
           name: Functional tests
-          command: mvn surefire:test
+          command: mvn test
       - run:
           name: Coverage report
           command: mvn jacoco:report
