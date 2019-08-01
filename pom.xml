@@ -5,8 +5,14 @@
     <modelVersion>4.0.0</modelVersion>
 
     <properties>
-        <AutomationFwApi.version>1.0-SNAPSHOT</AutomationFwApi.version>
-        <AutomationFwWeb.version>1.0-SNAPSHOT</AutomationFwWeb.version>
+        <AutomationFwApi.version>master</AutomationFwApi.version>
+        <AutomationFwWeb.version>master</AutomationFwWeb.version>
+        <maven-compiler-plugin.version>3.8.0</maven-compiler-plugin.version>
+        <maven-compiler-plugin.source>1.8</maven-compiler-plugin.source>
+        <maven-surefire-plugin.version>2.22.1</maven-surefire-plugin.version>
+        <maven-surefire-report-plugin.version>2.22.2</maven-surefire-report-plugin.version>
+        <jacoco-maven-plugin.version>0.8.4</jacoco-maven-plugin.version>
+        <cluecumber-report-plugin.version>2.2.0</cluecumber-report-plugin.version>
     </properties>
 
     <groupId>com.esens</groupId>
@@ -17,12 +23,12 @@
         <dependency>
             <groupId>com.github.esensautomation</groupId>
             <artifactId>AutomationFwApi</artifactId>
-            <version>master</version>
+            <version>${AutomationFwApi.version}</version>
         </dependency>
         <dependency>
             <groupId>com.github.esensautomation</groupId>
             <artifactId>AutomationFwWeb</artifactId>
-            <version>master</version>
+            <version>${AutomationFwWeb.version}</version>
         </dependency>
     </dependencies>
 
@@ -31,17 +37,17 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.8.0</version>
+                <version>${maven-compiler-plugin.version}</version>
                 <configuration>
                     <encoding>UTF-8</encoding>
-                    <source>1.8</source>
-                    <target>1.8</target>
+                    <source>${maven-compiler-plugin.source}</source>
+                    <target>${maven-compiler-plugin.source}</target>
                 </configuration>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
-                <version>2.22.1</version>
+                <version>${maven-surefire-plugin.version}</version>
                 <configuration>
                     <includes>*FtRunner.class</includes>
                 </configuration>
@@ -49,12 +55,12 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-report-plugin</artifactId>
-                <version>3.0.0-M3</version>
+                <version>${maven-surefire-report-plugin.version}</version>
             </plugin>
             <plugin>
                 <groupId>org.jacoco</groupId>
                 <artifactId>jacoco-maven-plugin</artifactId>
-                <version>0.8.4</version>
+                <version>${jacoco-maven-plugin.version}</version>
                 <executions>
                     <execution>
                         <id>prepare-unit-tests</id>
@@ -83,9 +89,22 @@
                 </executions>
             </plugin>
             <plugin>
-                <groupId>org.pitest</groupId>
-                <artifactId>pitest-maven</artifactId>
-                <version>1.4.9</version>
+                <groupId>com.trivago.rta</groupId>
+                <artifactId>cluecumber-report-plugin</artifactId>
+                <version>${cluecumber-report-plugin.version}</version>
+                <executions>
+                    <execution>
+                        <id>report</id>
+                        <phase>post-integration-test</phase>
+                        <goals>
+                            <goal>reporting</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <sourceJsonReportDirectory>${project.build.directory}/cucumber-report</sourceJsonReportDirectory>
+                    <generatedHtmlReportDirectory>${project.build.directory}/cucumber-html-report</generatedHtmlReportDirectory>
+                </configuration>
             </plugin>
         </plugins>
     </build>

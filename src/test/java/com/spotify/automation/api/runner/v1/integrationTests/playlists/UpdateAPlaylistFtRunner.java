@@ -11,7 +11,8 @@ import org.junit.runner.RunWith;
                 "com.esens.automationFwk.steps",
                 "com.esens.automationFwk.api.steps",
                 "com.spotify.automation.api.steps"
-        }
+        },
+        plugin = {"json:target/cucumber-report/updateAPlaylist.json"}
 )
 public class UpdateAPlaylistFtRunner {
 }

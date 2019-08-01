@@ -11,12 +11,12 @@ jobs: # a collection of steps
           command: mvn clean compile
       - run:
           name: Functional tests
-          command: mvn surefire-report:report
-      - store_artifacts:
-          path: target/site/surefire-report.html
+          command: mvn surefire:test
       - run:
           name: Coverage report
           command: mvn jacoco:report
+      - store_artifacts:
+          path: target/cucumber-html-report
       - store_artifacts:
           path: target/site/jacoco
       - store_test_results:
