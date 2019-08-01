@@ -11,7 +11,7 @@ jobs: # a collection of steps
           command: mvn clean compile
       - run:
           name: Functional tests
-          command: mvn test
+          command: mvn test cluecumber-report:reporting
       - run:
           name: Coverage report
           command: mvn jacoco:report
