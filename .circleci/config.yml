@@ -5,16 +5,10 @@ jobs: # a collection of steps
       - image: markhobson/maven-chrome:latest # ...with this image as the primary container; this is where all `steps` will run
     steps: # a collection of executable commands
       - checkout # check out source code to working directory
-      - run:
-          name: Install dependencies # See: https://circleci.com/docs/2.0/parallelism-faster-jobs/
-          # Use "./gradlew test" instead if tests are not run in parallel
-          command: mvn clean compile
-      - run:
-          name: Functional tests
-          command: mvn test cluecumber-report:reporting
-      - run:
-          name: Coverage report
-          command: mvn jacoco:report
+      - run: mvn clean compile
+      - run: mvn test
+      - run: cluecumber-report:reporting
+      - run: mvn jacoco:report
       - store_artifacts:
           path: target/cucumber-html-report
       - store_artifacts:
