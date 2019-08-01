@@ -2,7 +2,7 @@ package com.spotify.automation.api.steps;
 
 import com.esens.automationFwk.api.steps.ApiScenarioContext;
 
-public class SpotifyApiScenarioContext extends ApiScenarioContext {
+public class SpotifyApiScenarioContext {
 
     private String authorizationRedirectionUrl;
     private String authorizationToken;
@@ -10,7 +10,7 @@ public class SpotifyApiScenarioContext extends ApiScenarioContext {
     private static SpotifyApiScenarioContext instance = new SpotifyApiScenarioContext();
 
     protected SpotifyApiScenarioContext(){
-        super();
+
     }
 
     public static SpotifyApiScenarioContext getInstance(){

@@ -9,13 +9,13 @@ Feature: [Spotify][v1][IntegrationTests] Create a Playlist
     And I prepare Api request with json body from data file "v1/IntegrationTests/Playlists/Request/create_playlist_OK.json"
     When I send Spotify Api create playlist request with user id "2g5o4vq6ayxp9eo5xlqw6os2k"
     Then validate Api response status code is 201
-    And verify Api response contains json attributes with string values
+    And validate Api response contains json attributes with string values
       | jsonPath      | expectedValue                 |
       | name          | My Training Playlist          |
       | description   | Playlist for automation tests |
       | public        | false                         |
       | collaborative | false                         |
-    And verify Api response json attributes exists
+    And validate Api response json attributes exists
       | jsonPath      |
       | external_urls |
       | followers     |
@@ -26,11 +26,10 @@ Feature: [Spotify][v1][IntegrationTests] Create a Playlist
 
   @ErrorCase
   Scenario: Error Case - no auth token
-    Given clear Api request specification
-    And I prepare Api request with "Content-Type" header as "application/json"
+    Given I prepare Api request with "Content-Type" header as "application/json"
     And I prepare Api request with json body from data file "v1/IntegrationTests/Playlists/Request/create_playlist_OK.json"
     When I send Spotify Api create playlist request with user id "2g5o4vq6ayxp9eo5xlqw6os2k"
     Then validate Api response status code is 401
-    And verify Api response contains json attributes with string values
+    And validate Api response contains json attributes with string values
       | jsonPath      | expectedValue     |
       | error.message | No token provided |

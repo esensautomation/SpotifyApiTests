@@ -2,11 +2,10 @@ package com.spotify.automation.api.steps;
 
 import com.esens.automationFwk.EsensLogger;
 import com.esens.automationFwk.api.steps.ApiScenarioContext;
-import com.esens.automationFwk.exceptions.OperatingSystemNotSupportedException;
 import com.esens.automationFwk.utils.OSValidator;
-import com.spotify.automation.api.exceptions.SpotifyAuthorizationTokenNotFound;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
+import io.github.bonigarcia.wdm.WebDriverManager;
 import io.restassured.RestAssured;
 import io.restassured.http.Header;
 import io.restassured.response.Response;
@@ -25,19 +24,9 @@ import java.util.regex.Pattern;
 
 public class SpotifyApiInitializationSteps {
 
-    /**
-     * Sample step
-     */
-    @Given("^sample Spotify API given step$")
-    public void sampleSpotifyAPIGivenStep(){
-
-    }
-
     @Given("I ask for Spotify Api token with scope {string}")
-    public void iAskForSpotifyTokenWithScope(String scope) throws SpotifyAuthorizationTokenNotFound, OperatingSystemNotSupportedException {
-        EsensLogger.logScenarioStep(scope);
-        System.out.println("- Asking for Spotify authorization token with scope : " + scope + " ...");
-        System.out.println("\n");
+    public void iAskForSpotifyTokenWithScope(String scope) {
+        EsensLogger.getInstance().logScenarioStep("I ask for Spotify Api token with scope {" + scope + "}");
         System.out.println("- Request & Response :");
         System.out.println("\n");
         RequestSpecification rSpec = RestAssured
@@ -65,18 +54,7 @@ public class SpotifyApiInitializationSteps {
         System.out.println("- Using chromedriver ...");
         System.out.println("\n");
         // select driver executable depending on the OS
-        if(OSValidator.isMac()){
-            System.setProperty("webdriver.chrome.driver", "src/test/resources/bin/mac/chromedriver");
-        }
-        else if(OSValidator.isLinux()){
-            System.setProperty("webdriver.chrome.driver", "src/test/resources/bin/linux/chromedriver");
-        }
-        else if(OSValidator.isWindows()){
-            System.setProperty("webdriver.chrome.driver", "src/test/resources/bin/chromedriver.exe");
-        }
-        else{
-            throw new OperatingSystemNotSupportedException();
-        }
+        WebDriverManager.chromedriver().setup();
         // open auth redirect url
         ChromeOptions options = new ChromeOptions();
         options.setHeadless(true);
@@ -110,8 +88,6 @@ public class SpotifyApiInitializationSteps {
             System.out.println("\n");
             // save token
             SpotifyApiScenarioContext.getInstance().setAuthorizationToken(token);
-        }else{
-            throw new SpotifyAuthorizationTokenNotFound(driver.getCurrentUrl());
         }
         driver.quit();
     }

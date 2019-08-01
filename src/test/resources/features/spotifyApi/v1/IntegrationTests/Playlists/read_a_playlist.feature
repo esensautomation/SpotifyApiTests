@@ -7,7 +7,7 @@ Feature: [Spotify][v1][IntegrationTests] Read a Playlist
     Given I prepare Spotify Api request with token from scenario
     When I send Spotify Api read playlist request with playlist id "1cZirM1Yv7bcx9nj2ZDNOo"
     Then validate Api response status code is 200
-    And verify Api response contains json attributes with string values
+    And validate Api response contains json attributes with string values
       | jsonPath      | expectedValue                                            |
       | name          | [DoNotTouch] My Persistent Playlist                      |
       | description   | Playlist for automation tests. Do not delete or modify ! |
@@ -18,6 +18,6 @@ Feature: [Spotify][v1][IntegrationTests] Read a Playlist
   Scenario: Error Case - no auth token
     When I send Spotify Api read playlist request with playlist id "1cZirM1Yv7bcx9nj2ZDNOo"
     Then validate Api response status code is 401
-    And verify Api response contains json attributes with string values
+    And validate Api response contains json attributes with string values
       | jsonPath      | expectedValue     |
       | error.message | No token provided |
