@@ -49,7 +49,9 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>${maven-surefire-plugin.version}</version>
                 <configuration>
-                    <includes>*FtRunner.java</includes>
+                    <includes>
+                        <include>**/*FtRunner.java</include>
+                    </includes>
                 </configuration>
             </plugin>
             <plugin>
